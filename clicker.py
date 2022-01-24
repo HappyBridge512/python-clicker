@@ -26,9 +26,9 @@ price_6 = price * 90
 
 #--------------codes
 state_promo = "CLICKERGIFT"		# + 100 to money, and + 1 to damage
-temp_promo_1 = "QUUYKGYSC8L"	# + 50 to money, and + 2 to damage
-temp_promo_2 = "GF63T71NCTQ"	# + 3 to damage
-temp_promo_3 = "VL0BM3B7UKQ"	# + 150 to money
+temp_promo_1 = "QUUYKGYSC8L"		# + 50 to money, and + 2 to damage
+temp_promo_2 = "GF63T71NCTQ"		# + 3 to damage
+temp_promo_3 = "VL0BM3B7UKQ"		# + 150 to money
 #--------------codes
 
 app = Tk()

@@ -17,20 +17,12 @@ temp = 0
 #--------------game values
 
 #--------------prices
-#if temp == 0:
 price_1 = price
 price_2 = price * 8
 price_3 = price * 15
 price_4 = price * 29
 price_5 = price * 38
 price_6 = price * 90
-#else:
-#	price_1 = price * 5
-#	price_2 = price * 10
-#	price_3 = price * 25
-#	price_4 = price * 50
-#	price_5 = price * 100
-#	price_6 = price * 200
 #--------------prices
 
 #--------------codes

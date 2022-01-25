@@ -13,22 +13,31 @@ hp = 10
 damage = 1
 money = 0
 price = 10
+temp = 0
 #--------------game values
 
 #--------------prices
+#if temp == 0:
 price_1 = price
 price_2 = price * 8
 price_3 = price * 15
 price_4 = price * 29
 price_5 = price * 38
 price_6 = price * 90
+#else:
+#	price_1 = price * 5
+#	price_2 = price * 10
+#	price_3 = price * 25
+#	price_4 = price * 50
+#	price_5 = price * 100
+#	price_6 = price * 200
 #--------------prices
 
 #--------------codes
 state_promo = "CLICKERGIFT"		# + 100 to money, and + 1 to damage
-temp_promo_1 = "QUUYKGYSC8L"		# + 50 to money, and + 2 to damage
-temp_promo_2 = "GF63T71NCTQ"		# + 3 to damage
-temp_promo_3 = "VL0BM3B7UKQ"		# + 150 to money
+temp_promo_1 = "QUUYKGYSC8L"	# + 50 to money, and + 2 to damage
+temp_promo_2 = "GF63T71NCTQ"	# + 3 to damage
+temp_promo_3 = "VL0BM3B7UKQ"	# + 150 to money
 #--------------codes
 
 app = Tk()
@@ -56,9 +65,13 @@ def buff_1():
 	if money >= price_1:
 		money -= price_1
 		damage += 1
-		hp += 90
 
-		main_btn.config(text=hp)
+		if temp == 0:
+			hp += 90
+			main_btn.config(text=hp)
+		else:
+			main_btn.config(text="HIT")
+
 		damage_label.config(text="DMG: " + str(damage))
 		money_label.config(text="$" + str(money))
 		bonus_dmg_1['state'] = "disabled"
@@ -78,9 +91,13 @@ def buff_2():
 	if money >= price_2:
 		money -= price_2
 		damage += 3
-		hp += 150
 
-		main_btn.config(text=hp)
+		if temp == 0:
+			hp += 150
+			main_btn.config(text=hp)
+		else:
+			main_btn.config(text="HIT")
+
 		damage_label.config(text="DMG: " + str(damage))
 		money_label.config(text="$" + str(money))
 		bonus_dmg_2['state'] = "disabled"
@@ -100,9 +117,13 @@ def buff_3():
 	if money >= price_3:
 		money -= price_3
 		damage += 5
-		hp += 290
 
-		main_btn.config(text=hp)
+		if temp == 0:
+			hp += 290
+			main_btn.config(text=hp)
+		else:
+			main_btn.config(text="HIT")
+
 		damage_label.config(text="DMG: " + str(damage))
 		money_label.config(text="$" + str(money))
 		bonus_dmg_3['state'] = "disabled"
@@ -122,9 +143,13 @@ def buff_4():
 	if money >= price_4:
 		money -= price_4
 		damage += 10
-		hp += 370
 
-		main_btn.config(text=hp)
+		if temp == 0:
+			hp += 370
+			main_btn.config(text=hp)
+		else:
+			main_btn.config(text="HIT")
+
 		damage_label.config(text="DMG: " + str(damage))
 		money_label.config(text="$" + str(money))
 		bonus_dmg_4['state'] = "disabled"
@@ -144,9 +169,13 @@ def buff_5():
 	if money >= price_5:
 		money -= price_5
 		damage *= 2
-		hp += 900
 
-		main_btn.config(text=hp)
+		if temp == 0:
+			hp += 900
+			main_btn.config(text=hp)
+		else:
+			main_btn.config(text="HIT")
+
 		damage_label.config(text="DMG: " + str(damage))
 		money_label.config(text="$" + str(money))
 		bonus_dmg_5['state'] = "disabled"
@@ -166,9 +195,13 @@ def buff_6():
 	if money >= price_6:
 		money -= price_6
 		damage *= 3
-		hp += 2500
 
-		main_btn.config(text=hp)
+		if temp == 0:
+			hp += 2500
+			main_btn.config(text=hp)
+		else:
+			main_btn.config(text="HIT")
+
 		damage_label.config(text="DMG: " + str(damage))
 		money_label.config(text="$" + str(money))
 		bonus_dmg_6['state'] = "disabled"
@@ -212,7 +245,10 @@ def next_step():
 		main_btn['state'] = "disabled"
 		hp = 0
 		main_btn.config(text=hp)
-		continues()
+		if temp == 0:
+			continues()
+		else:
+			pass
 	else:
 		print(f"HP = [{str(hp)}]")
 
@@ -221,6 +257,14 @@ def continues():
 	global damage
 	global money
 	global hp
+	global temp
+
+	global price_1
+	global price_2
+	global price_3
+	global price_4
+	global price_5
+	global price_6
 
 	showinfo("Is this the end?", "Hi\nI`m developer of this game")
 	showinfo("Is this the end?", "And if you see that message, you must ended the game")
@@ -231,10 +275,27 @@ def continues():
 		damage = 1
 		money = 0
 		hp = 0
+		temp = 1
+
+		price_1 = price * 5
+		price_2 = price * 10
+		price_3 = price * 25
+		price_4 = price * 50
+		price_5 = price * 100
+		price_6 = price * 200
 
 		damage_label.config(text="DMG: " + str(damage))
 		money_label.config(text="$" + str(money))
 		main_btn.config(text="HIT", command=hard_mode)
+
+
+		cost_label_1.config(text="$" + str(price_1))
+		cost_label_2.config(text="$" + str(price_2))
+		cost_label_3.config(text="$" + str(price_3))
+		cost_label_4.config(text="$" + str(price_4))
+		cost_label_5.config(text="$" + str(price_5))
+		cost_label_6.config(text="$" + str(price_6))
+
 
 		main_btn['state'] = "normal"
 		bonus_dmg_1['state'] = "normal"
@@ -243,7 +304,6 @@ def continues():
 		bonus_dmg_4['state'] = "normal"
 		bonus_dmg_5['state'] = "normal"
 		bonus_dmg_6['state'] = "normal"
-
 	else:
 		print(deb + "Player answer 'no'")
 		showinfo("Good luck", "Ok, see you next time.")
@@ -255,11 +315,6 @@ def hard_mode():
 	money += damage
 
 	money_label.config(text="$" + str(money))
-
-	"""
-	more code?
-	later!
-	"""
 #--------------main code
 
 #--------------enter promocode
@@ -462,7 +517,7 @@ cost_label_5.place(relx=.45, rely=.77)
 cost_label_6 = Label(text="$" + str(price_6), bg="#514", fg="#fff", font="Arial 13")
 cost_label_6.place(relx=.75, rely=.77)
 #--------------cost labels
-
+#continues()
 if __name__ == '__main__':
 	saves_checker()
 	print(f"{deb}Game start\nHP = [{str(hp)}]\nDMG = [{str(damage)}]")

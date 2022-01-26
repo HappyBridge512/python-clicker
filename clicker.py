@@ -247,18 +247,6 @@ def next_step():
 
 
 def continues():
-	global damage
-	global money
-	global hp
-	global temp
-
-	global price_1
-	global price_2
-	global price_3
-	global price_4
-	global price_5
-	global price_6
-
 	showinfo("Is this the end?", "Hi\nI`m developer of this game")
 	showinfo("Is this the end?", "And if you see that message, you must ended the game")
 	showinfo("Is this the end?", "But that`s wrong.\nThe game continue and becomes more difficult")

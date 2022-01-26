@@ -26,7 +26,7 @@ price_6 = price * 90
 #--------------prices
 
 #--------------codes
-state_promo = "CLICKERGIFT"		# + 100 to money, and + 1 to damage
+state_promo = "CLICKERGIFT" 	# + 100 to money, and + 1 to damage
 temp_promo_1 = "QUUYKGYSC8L"	# + 50 to money, and + 2 to damage
 temp_promo_2 = "GF63T71NCTQ"	# + 3 to damage
 temp_promo_3 = "VL0BM3B7UKQ"	# + 150 to money
@@ -240,7 +240,8 @@ def next_step():
 		if temp == 0:
 			continues()
 		else:
-			pass
+			main_btn.config(text="HIT", command=hard_mode)
+			change_prices()
 	else:
 		print(f"HP = [{str(hp)}]")
 
@@ -263,39 +264,7 @@ def continues():
 	showinfo("Is this the end?", "But that`s wrong.\nThe game continue and becomes more difficult")
 	if askyesno("Is this the end?", "Do you want to contine the game?") == True:
 		print(deb + "Player answer 'yes'")
-
-		damage = 1
-		money = 0
-		hp = 0
-		temp = 1
-
-		price_1 = price * 5
-		price_2 = price * 10
-		price_3 = price * 25
-		price_4 = price * 50
-		price_5 = price * 100
-		price_6 = price * 200
-
-		damage_label.config(text="DMG: " + str(damage))
-		money_label.config(text="$" + str(money))
-		main_btn.config(text="HIT", command=hard_mode)
-
-
-		cost_label_1.config(text="$" + str(price_1))
-		cost_label_2.config(text="$" + str(price_2))
-		cost_label_3.config(text="$" + str(price_3))
-		cost_label_4.config(text="$" + str(price_4))
-		cost_label_5.config(text="$" + str(price_5))
-		cost_label_6.config(text="$" + str(price_6))
-
-
-		main_btn['state'] = "normal"
-		bonus_dmg_1['state'] = "normal"
-		bonus_dmg_2['state'] = "normal"
-		bonus_dmg_3['state'] = "normal"
-		bonus_dmg_4['state'] = "normal"
-		bonus_dmg_5['state'] = "normal"
-		bonus_dmg_6['state'] = "normal"
+		change_prices()
 	else:
 		print(deb + "Player answer 'no'")
 		showinfo("Good luck", "Ok, see you next time.")
@@ -307,6 +276,52 @@ def hard_mode():
 	money += damage
 
 	money_label.config(text="$" + str(money))
+
+
+def change_prices():
+	global damage
+	global money
+	global hp
+	global temp
+
+	global price_1
+	global price_2
+	global price_3
+	global price_4
+	global price_5
+	global price_6
+
+	damage = 1
+	money = 0
+	hp = 0
+	temp = 1
+
+	damage_label.config(text="DMG: " + str(damage))
+	money_label.config(text="$" + str(money))
+	main_btn.config(text="HIT", command=hard_mode)
+
+	price_1 += price * 10
+	price_2 += price * 25
+	price_3 += price * 50
+	price_4 += price * 100
+	price_5 += price * 200
+	price_6 += price * 600
+
+	cost_label_1.config(text="$" + str(price_1))
+	cost_label_2.config(text="$" + str(price_2))
+	cost_label_3.config(text="$" + str(price_3))
+	cost_label_4.config(text="$" + str(price_4))
+	cost_label_5.config(text="$" + str(price_5))
+	cost_label_6.config(text="$" + str(price_6))
+
+
+	main_btn['state'] = "normal"
+	bonus_dmg_1['state'] = "normal"
+	bonus_dmg_2['state'] = "normal"
+	bonus_dmg_3['state'] = "normal"
+	bonus_dmg_4['state'] = "normal"
+	bonus_dmg_5['state'] = "normal"
+	bonus_dmg_6['state'] = "normal"
 #--------------main code
 
 #--------------enter promocode
@@ -454,7 +469,7 @@ def saves_checker():
 #--------------cheat
 def cheat_on():
 	global money
-	money += 5000
+	money += 50000
 	money_label.config(text="$" + str(money))
 	cheat_btn.destroy()
 
